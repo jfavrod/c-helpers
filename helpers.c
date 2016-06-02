@@ -263,25 +263,46 @@ void translateCSV(char numbersCSV[], double numbers[], int * count)
 /*****************************************************************
 // Function name:       ascending
 //
-// Description:         Sorts an array of doubles from least to
+// Description:         Used with qsort to sort items in ascending
+//                      order.
 //
-// Parameters:          numbers
+// Parameters:          
 //
-// Return values:       void
+// Return values:       
 ****************************************************************/
 
 int ascending(const void *p, const void *q) {
     int x = *(const int *)p;
     int y = *(const int *)q;
 
-    /* Avoid return x - y, which can cause undefined behaviour
-       because of signed integer overflow.
-       Return -1 if you want ascending, 1 if you want descending order. 
-       Return 1 if you want ascending, -1 if you want descending order. */
     if (x < y)
         return -1;  
     else if (x > y)
         return 1;   
+
+    return 0;
+}
+
+
+/*****************************************************************
+// Function name:       descending
+//
+// Description:         Used with qsort to sort items in
+//                      descending order.
+//
+// Parameters:          
+//
+// Return values:       
+****************************************************************/
+
+int descending(const void *p, const void *q) {
+    int x = *(const int *)p;
+    int y = *(const int *)q;
+
+    if (x < y)
+        return 1;  
+    else if (x > y)
+        return -1;   
 
     return 0;
 }
